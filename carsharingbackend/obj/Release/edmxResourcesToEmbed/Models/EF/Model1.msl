@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="carsharingdbModelStoreContainer" CdmEntityContainer="carsharingdbEntities">
+    <EntitySetMapping Name="cars">
+      <EntityTypeMapping TypeName="carsharingdbModel.car">
+        <MappingFragment StoreEntitySet="car">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="pictureUrl" ColumnName="pictureUrl" />
+          <ScalarProperty Name="year" ColumnName="year" />
+          <ScalarProperty Name="numberOfSits" ColumnName="numberOfSits" />
+          <ScalarProperty Name="fuelType" ColumnName="fuelType" />
+          <ScalarProperty Name="placa" ColumnName="placa" />
+          <ScalarProperty Name="modelo" ColumnName="modelo" />
+          <ScalarProperty Name="marca" ColumnName="marca" />
+          <ScalarProperty Name="idCarOwner" ColumnName="idCarOwner" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carOwners">
+      <EntityTypeMapping TypeName="carsharingdbModel.carOwner">
+        <MappingFragment StoreEntitySet="carOwner">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="token" ColumnName="token" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="cellphone" ColumnName="cellphone" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="carPositions">
+      <EntityTypeMapping TypeName="carsharingdbModel.carPosition">
+        <MappingFragment StoreEntitySet="carPosition">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="lng" ColumnName="lng" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="idCar" ColumnName="idCar" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="components">
+      <EntityTypeMapping TypeName="carsharingdbModel.component">
+        <MappingFragment StoreEntitySet="component">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="isThere" ColumnName="isThere" />
+          <ScalarProperty Name="rfidTicketCode" ColumnName="rfidTicketCode" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="idCar" ColumnName="idCar" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="drivers">
+      <EntityTypeMapping TypeName="carsharingdbModel.driver">
+        <MappingFragment StoreEntitySet="driver">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="available" ColumnName="available" />
+          <ScalarProperty Name="idCarOwner" ColumnName="idCarOwner" />
+          <ScalarProperty Name="pictureUrl" ColumnName="pictureUrl" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="cellphone" ColumnName="cellphone" />
+          <ScalarProperty Name="dni" ColumnName="dni" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="driverXCars">
+      <EntityTypeMapping TypeName="carsharingdbModel.driverXCar">
+        <MappingFragment StoreEntitySet="driverXCar">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="lendEndDate" ColumnName="lendEndDate" />
+          <ScalarProperty Name="lendStartDate" ColumnName="lendStartDate" />
+          <ScalarProperty Name="idDriver" ColumnName="idDriver" />
+          <ScalarProperty Name="idCar" ColumnName="idCar" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notifications">
+      <EntityTypeMapping TypeName="carsharingdbModel.notification">
+        <MappingFragment StoreEntitySet="notification">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="isThere" ColumnName="isThere" />
+          <ScalarProperty Name="lng" ColumnName="lng" />
+          <ScalarProperty Name="lat" ColumnName="lat" />
+          <ScalarProperty Name="notificationDate" ColumnName="notificationDate" />
+          <ScalarProperty Name="idComponent" ColumnName="idComponent" />
+          <ScalarProperty Name="idDriver" ColumnName="idDriver" />
+          <ScalarProperty Name="idCar" ColumnName="idCar" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

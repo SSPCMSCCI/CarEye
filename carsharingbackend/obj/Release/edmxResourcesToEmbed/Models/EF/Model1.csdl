@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="carsharingdbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="carsharingdbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cars" EntityType="carsharingdbModel.car" />
+    <EntitySet Name="carOwners" EntityType="carsharingdbModel.carOwner" />
+    <EntitySet Name="carPositions" EntityType="carsharingdbModel.carPosition" />
+    <EntitySet Name="components" EntityType="carsharingdbModel.component" />
+    <EntitySet Name="drivers" EntityType="carsharingdbModel.driver" />
+    <EntitySet Name="driverXCars" EntityType="carsharingdbModel.driverXCar" />
+    <EntitySet Name="notifications" EntityType="carsharingdbModel.notification" />
+    <AssociationSet Name="FK_car_carOwner" Association="carsharingdbModel.FK_car_carOwner">
+      <End Role="carOwner" EntitySet="carOwners" />
+      <End Role="car" EntitySet="cars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_carPosition_car" Association="carsharingdbModel.FK_carPosition_car">
+      <End Role="car" EntitySet="cars" />
+      <End Role="carPosition" EntitySet="carPositions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_component_car" Association="carsharingdbModel.FK_component_car">
+      <End Role="car" EntitySet="cars" />
+      <End Role="component" EntitySet="components" />
+    </AssociationSet>
+    <AssociationSet Name="FK_driverXCar_car" Association="carsharingdbModel.FK_driverXCar_car">
+      <End Role="car" EntitySet="cars" />
+      <End Role="driverXCar" EntitySet="driverXCars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_notification_car" Association="carsharingdbModel.FK_notification_car">
+      <End Role="car" EntitySet="cars" />
+      <End Role="notification" EntitySet="notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_driver_carOwner" Association="carsharingdbModel.FK_driver_carOwner">
+      <End Role="carOwner" EntitySet="carOwners" />
+      <End Role="driver" EntitySet="drivers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_notification_component" Association="carsharingdbModel.FK_notification_component">
+      <End Role="component" EntitySet="components" />
+      <End Role="notification" EntitySet="notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_driverXCar_driver" Association="carsharingdbModel.FK_driverXCar_driver">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="driverXCar" EntitySet="driverXCars" />
+    </AssociationSet>
+    <AssociationSet Name="FK_notification_driver" Association="carsharingdbModel.FK_notification_driver">
+      <End Role="driver" EntitySet="drivers" />
+      <End Role="notification" EntitySet="notifications" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="car">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCarOwner" Type="Int32" Nullable="false" />
+    <Property Name="marca" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="modelo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="placa" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="fuelType" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="numberOfSits" Type="Int32" Nullable="false" />
+    <Property Name="year" Type="Int32" Nullable="false" />
+    <Property Name="pictureUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="carOwner" Relationship="carsharingdbModel.FK_car_carOwner" FromRole="car" ToRole="carOwner" />
+    <NavigationProperty Name="carPositions" Relationship="carsharingdbModel.FK_carPosition_car" FromRole="car" ToRole="carPosition" />
+    <NavigationProperty Name="components" Relationship="carsharingdbModel.FK_component_car" FromRole="car" ToRole="component" />
+    <NavigationProperty Name="driverXCars" Relationship="carsharingdbModel.FK_driverXCar_car" FromRole="car" ToRole="driverXCar" />
+    <NavigationProperty Name="notifications" Relationship="carsharingdbModel.FK_notification_car" FromRole="car" ToRole="notification" />
+  </EntityType>
+  <EntityType Name="carOwner">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="dni" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="fullname" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cellphone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="token" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="cars" Relationship="carsharingdbModel.FK_car_carOwner" FromRole="carOwner" ToRole="car" />
+    <NavigationProperty Name="drivers" Relationship="carsharingdbModel.FK_driver_carOwner" FromRole="carOwner" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="carPosition">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCar" Type="Int32" Nullable="false" />
+    <Property Name="lat" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="lng" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="car" Relationship="carsharingdbModel.FK_carPosition_car" FromRole="carPosition" ToRole="car" />
+  </EntityType>
+  <EntityType Name="component">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCar" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="rfidTicketCode" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isThere" Type="Boolean" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="car" Relationship="carsharingdbModel.FK_component_car" FromRole="component" ToRole="car" />
+    <NavigationProperty Name="notifications" Relationship="carsharingdbModel.FK_notification_component" FromRole="component" ToRole="notification" />
+  </EntityType>
+  <EntityType Name="driver">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="dni" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="cellphone" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="pictureUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="idCarOwner" Type="Int32" Nullable="false" />
+    <Property Name="available" Type="Boolean" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="carOwner" Relationship="carsharingdbModel.FK_driver_carOwner" FromRole="driver" ToRole="carOwner" />
+    <NavigationProperty Name="driverXCars" Relationship="carsharingdbModel.FK_driverXCar_driver" FromRole="driver" ToRole="driverXCar" />
+    <NavigationProperty Name="notifications" Relationship="carsharingdbModel.FK_notification_driver" FromRole="driver" ToRole="notification" />
+  </EntityType>
+  <EntityType Name="driverXCar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCar" Type="Int32" Nullable="false" />
+    <Property Name="idDriver" Type="Int32" Nullable="false" />
+    <Property Name="lendStartDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="lendEndDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="car" Relationship="carsharingdbModel.FK_driverXCar_car" FromRole="driverXCar" ToRole="car" />
+    <NavigationProperty Name="driver" Relationship="carsharingdbModel.FK_driverXCar_driver" FromRole="driverXCar" ToRole="driver" />
+  </EntityType>
+  <EntityType Name="notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idCar" Type="Int32" Nullable="false" />
+    <Property Name="idDriver" Type="Int32" Nullable="false" />
+    <Property Name="idComponent" Type="Int32" Nullable="false" />
+    <Property Name="notificationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="lat" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="lng" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="isThere" Type="Boolean" Nullable="false" />
+    <Property Name="active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="car" Relationship="carsharingdbModel.FK_notification_car" FromRole="notification" ToRole="car" />
+    <NavigationProperty Name="component" Relationship="carsharingdbModel.FK_notification_component" FromRole="notification" ToRole="component" />
+    <NavigationProperty Name="driver" Relationship="carsharingdbModel.FK_notification_driver" FromRole="notification" ToRole="driver" />
+  </EntityType>
+  <Association Name="FK_car_carOwner">
+    <End Type="carsharingdbModel.carOwner" Role="carOwner" Multiplicity="1" />
+    <End Type="carsharingdbModel.car" Role="car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carOwner">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="car">
+        <PropertyRef Name="idCarOwner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_carPosition_car">
+    <End Type="carsharingdbModel.car" Role="car" Multiplicity="1" />
+    <End Type="carsharingdbModel.carPosition" Role="carPosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="car">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="carPosition">
+        <PropertyRef Name="idCar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_component_car">
+    <End Type="carsharingdbModel.car" Role="car" Multiplicity="1" />
+    <End Type="carsharingdbModel.component" Role="component" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="car">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="component">
+        <PropertyRef Name="idCar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_driverXCar_car">
+    <End Type="carsharingdbModel.car" Role="car" Multiplicity="1" />
+    <End Type="carsharingdbModel.driverXCar" Role="driverXCar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="car">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="driverXCar">
+        <PropertyRef Name="idCar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_notification_car">
+    <End Type="carsharingdbModel.car" Role="car" Multiplicity="1" />
+    <End Type="carsharingdbModel.notification" Role="notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="car">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="notification">
+        <PropertyRef Name="idCar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_driver_carOwner">
+    <End Type="carsharingdbModel.carOwner" Role="carOwner" Multiplicity="1" />
+    <End Type="carsharingdbModel.driver" Role="driver" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="carOwner">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="driver">
+        <PropertyRef Name="idCarOwner" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_notification_component">
+    <End Type="carsharingdbModel.component" Role="component" Multiplicity="1" />
+    <End Type="carsharingdbModel.notification" Role="notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="component">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="notification">
+        <PropertyRef Name="idComponent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_driverXCar_driver">
+    <End Type="carsharingdbModel.driver" Role="driver" Multiplicity="1" />
+    <End Type="carsharingdbModel.driverXCar" Role="driverXCar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="driverXCar">
+        <PropertyRef Name="idDriver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_notification_driver">
+    <End Type="carsharingdbModel.driver" Role="driver" Multiplicity="1" />
+    <End Type="carsharingdbModel.notification" Role="notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="driver">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="notification">
+        <PropertyRef Name="idDriver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

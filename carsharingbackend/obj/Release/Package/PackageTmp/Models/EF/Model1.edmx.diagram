@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="56d307a268de4e2981958e4c2a8ccbf4" Name="Diagram1">
+        <EntityTypeShape EntityType="carsharingdbModel.car" Width="1.5" PointX="3" PointY="4.375" />
+        <EntityTypeShape EntityType="carsharingdbModel.carOwner" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="carsharingdbModel.carPosition" Width="1.5" PointX="5.25" PointY="6.875" />
+        <EntityTypeShape EntityType="carsharingdbModel.component" Width="1.5" PointX="5.25" PointY="3.5" />
+        <EntityTypeShape EntityType="carsharingdbModel.driver" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="carsharingdbModel.driverXCar" Width="1.5" PointX="5.25" PointY="10.5" />
+        <EntityTypeShape EntityType="carsharingdbModel.notification" Width="1.5" PointX="7.5" PointY="6.625" />
+        <AssociationConnector Association="carsharingdbModel.FK_car_carOwner" />
+        <AssociationConnector Association="carsharingdbModel.FK_carPosition_car" />
+        <AssociationConnector Association="carsharingdbModel.FK_component_car" />
+        <AssociationConnector Association="carsharingdbModel.FK_driverXCar_car" />
+        <AssociationConnector Association="carsharingdbModel.FK_notification_car" />
+        <AssociationConnector Association="carsharingdbModel.FK_driver_carOwner" />
+        <AssociationConnector Association="carsharingdbModel.FK_notification_component" />
+        <AssociationConnector Association="carsharingdbModel.FK_driverXCar_driver" />
+        <AssociationConnector Association="carsharingdbModel.FK_notification_driver" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
